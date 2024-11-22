@@ -1,0 +1,14 @@
+---
+const {source, height, style, src} = Astro.props;
+---
+<sup>Quelle: <a href={source} target="_blank">{source}</a></sup>
+<div class="card" style={style}>
+  <iframe
+    src={src}
+    style="border-width: 0"
+    width="100%"
+    height={height}
+    loading="lazy"
+    allowfullscreen=""
+  />
+</div>

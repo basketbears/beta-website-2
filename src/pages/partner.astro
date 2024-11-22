@@ -1,0 +1,59 @@
+---
+import Layout from '~/layouts/main.astro';
+import {Image} from 'astro:assets';
+
+const partners = [{
+  url: import('~/assets/images/partner/bmmg.jpg'),
+  link: 'https://bmmgesamtschule.de/',
+}, {
+  url: import('~/assets/images/partner/ssb-krefeld.jpg'),
+  link: 'https://www.ssb-krefeld.de/',
+}, {
+  url: import('~/assets/images/partner/brsnw.png'),
+  link: 'https://www.brsnw.de/',
+}, {
+  url: import('~/assets/images/partner/kanters.png'),
+  link: 'https://www.sanitaetshaus-kanters.de/',
+}, {
+  url: import('~/assets/images/partner/tc-seidenstadt.png'),
+  link: 'http://wheelchairdance.online/',
+}, {
+  url: import('~/assets/images/partner/koeltgen.png'),
+  link: 'https://koeltgen.de/',
+}, {
+  url: import('~/assets/images/partner/landessportbund-nrw.png'),
+  link: 'https://www.lsb.nrw/',
+}, {
+  url: import('~/assets/images/partner/rollikids.png'),
+  link: 'https://rollikids.de/?id=28',
+}, {
+  url: import('~/assets/images/partner/rolling-tigers-bergheim.png'),
+  link: 'https://www.rsc-bergheim.de/',
+}, {
+  url: import('~/assets/images/partner/berns.png'),
+  link: 'https://www.bernsbaeckerei.de/',
+}, {
+  url: import('~/assets/images/partner/ece-bulls.png'),
+  link: 'https://bulls-basketball.eu/',
+}, {
+  url: import('~/assets/images/partner/invacare.png'),
+  link: 'https://www.invacare.de/de',
+}, {
+  url: import('~/assets/images/partner/zabel.png'),
+  link: 'http://zabelhafte-fotografie.de/',
+}]
+---
+
+<Layout content={{title: "Partner"}}>
+  <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 mx-auto max-w-7xl px-4 gap-">
+  {partners.map((partner) => {
+    return (
+      <div class="card" style="border: 1px solid #ededed">
+        <a href={partner.link} target="_blank">
+          <Image src={partner.url} alt={partner.link} />
+        </a>
+      </div>
+    )
+  })}
+  </div>
+</Layout>

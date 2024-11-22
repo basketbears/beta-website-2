@@ -1,0 +1,31 @@
+---
+import {Image} from 'astro:assets'
+
+const {image, title, summary, date, url} = Astro.props;
+// const importedImage = import(image);
+---
+{JSON.stringify(image)}
+<div class="card grow">
+  <a href={url}>
+    {(image != null) ? (
+      <div class="card-image">
+         
+      </div>
+    ) : (
+      <header class="card-header">
+          <span class="card-header-title">{title}</span>
+      </header>
+    )}
+    <div class="card-content">
+        <div class="content">
+          {(image != null) ? (
+            <span class="title is-4">{title}</span>
+          ) : null}
+          {summary}
+        </div>
+    </div>
+    <footer class="card-footer">
+        <p class="card-footer-item">{date}</p>
+    </footer>
+  </a>
+</div>

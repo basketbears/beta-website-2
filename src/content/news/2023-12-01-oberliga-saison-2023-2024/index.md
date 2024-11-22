@@ -1,5 +1,4 @@
 ---
-layout: '~/layouts/markdown.astro'
 date: 2023-12-01
 title: Oberliga-Saison 2023/2024
 summary: Ein Resümee auf halber Strecke

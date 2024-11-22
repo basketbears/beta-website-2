@@ -7,7 +7,7 @@ const news = await getCollection('news');
 ---
 <Layout content={{title: "News"}}>
   {JSON.stringify(news)}
-  {news.map((post) => {
+  {news.map((post: any) => {
     return <>
       <PostCard {...post.data} />
     </>

@@ -1,5 +1,5 @@
 ---
-import {people} from '~/people';
+import { getEntry } from 'astro:content';
 import {Image} from 'astro:assets'
 
 function slugify(text: string): string {
@@ -13,7 +13,7 @@ function slugify(text: string): string {
 }
 
 const { playerId, background } = Astro.props;
-const player = people[playerId as keyof typeof people];
+const player = (await getEntry('people', playerId))?.data!;
 const modalId = slugify(`${playerId}-${player.playerInfo.number}`);
 ---
 <!-- Player Card -->

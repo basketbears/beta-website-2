@@ -1,24 +1,31 @@
 ---
-layout: '~/layouts/markdown.astro'
-title: Kontakt
----
+import Layout from '~/layouts/main.astro';
 
-import {people} from '~/people';
+import { getEntry } from 'astro:content';
 import PersonCard from '~/components/person-card.astro'
 import IFrameCard from '~/components/iframe-card.astro'
 import ContactForm from '~/components/contact-form.html'
 
+const sven = (await getEntry('people', 'sven0-0'))?.data;
+const patrick = (await getEntry('people', 'patrick0-0'))?.data;
+const jill = (await getEntry('people', 'jill0-0'))?.data;
+---
+
+
+
+<Layout content={{title: "Kontakt"}}>
+
 <div class="grid grid-cols-1 md:grid-cols-2 mx-auto max-w-7xl px-4 gap-6">
 <div class="col-span-1">
 
-#### Schreibe uns eine E-Mail an [info@basket bears.de](mailto:info@basketbears.de)
+<h4>Schreibe uns eine E-Mail an <a href="mailto:info@basketbears.de">info@basket bears.de</a></h4>
 
 <ContactForm />
 </div>
 
 <div class="col-span-1">
 
-#### Adresse
+<h4>Adresse</h4>
 Bischöfliche Maria-Montessori-Gesamtschule  
 Minkweg 26  
 47803 Krefeld
@@ -35,7 +42,7 @@ Anfahrt über den Lehrerparkplatz am Winnertzweg
 </div>
 <div class="col-span-1" style="margin-bottom: -1rem">
 
-#### Weitere Kontakte
+<h4>Weitere Kontakte</h4>
 
 </div>
 
@@ -46,7 +53,7 @@ Anfahrt über den Lehrerparkplatz am Winnertzweg
   name="Sven Kaiser"
   email="sven.kaiser@basketbears.de"
   emailText="sven.kaiser&ZeroWidthSpace;@basketbears.de"
-  image={people['sven0-0'].profileImage}
+  image={sven.profileImage}
 />
 
 </div>
@@ -57,7 +64,7 @@ Anfahrt über den Lehrerparkplatz am Winnertzweg
   name="Patrick Weirauch"
   email="patrick.weirauch@basketbears.de"
   emailText="patrick.weirauch&ZeroWidthSpace;@basketbears.de"
-  image={people['patrick0-0'].profileImage}
+  image={patrick.profileImage}
 />
 
 </div>
@@ -68,9 +75,10 @@ Anfahrt über den Lehrerparkplatz am Winnertzweg
   name="Jill Kaiser-Föhles"
   email="jill.kaiser-foehles@basketbears.de"
   emailText="jill.kaiser-foehles&ZeroWidthSpace;@basketbears.de"
-  image={people['jill0-0'].profileImage}
+  image={jill.profileImage}
 />
 
 
 </div>
 </div>
+</Layout>

@@ -1,15 +1,15 @@
 ---
 import {Image} from 'astro:assets'
+import { undefined } from 'astro:schema';
 
-const {image, title, summary, date, url} = Astro.props;
-// const importedImage = import(image);
+const {data, slug} = Astro.props;
+const {image, title, summary, date} = data;
 ---
-{JSON.stringify(image)}
-<div class="card grow">
-  <a href={url}>
+<div class="card">
+  <a href={`/news/${slug}`}>
     {(image != null) ? (
       <div class="card-image">
-         
+        <Image src={image} alt={title}/>
       </div>
     ) : (
       <header class="card-header">

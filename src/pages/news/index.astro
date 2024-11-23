@@ -1,15 +1,12 @@
 ---
 import Layout from '~/layouts/main.astro';
 import PostCard from '~/components/post-card.astro';
-
 import { getCollection } from 'astro:content';
+
 const news = await getCollection('news');
 ---
 <Layout content={{title: "News"}}>
-  {JSON.stringify(news)}
   {news.map((post: any) => {
-    return <>
-      <PostCard {...post.data} />
-    </>
+    return <PostCard {...post} />
   })}
-</BaseLLayoutayout>
+</Layout>

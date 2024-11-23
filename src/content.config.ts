@@ -6,6 +6,7 @@ import { glob, file } from 'astro/loaders';
 
 // 3. Define your collection(s)
 const news = defineCollection({
+  loader: glob({ pattern: '**\/[^_]*.mdx?', base: "./src/content/news" }),
   schema: ({ image }) => {
     return z.object({
       date: z.date().optional(),
@@ -23,6 +24,7 @@ const news = defineCollection({
     })
   },
 });
+
 const people = defineCollection({
   loader: file('src/content/people.json'),
   schema: ({ image }) => {

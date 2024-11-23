@@ -21,6 +21,8 @@ gallery:
   - image: ./dsc00367.webp
 ---
 
+import IFrameCard from '~/components/iframe-card.astro'
+
 > ## ℹ️ Der Cup
 > 
 > [Der Sharks Cup](https://www.tvk-essen.de/sharks-cup/) ist ein freundschaftliches und doch intensives Rollstuhlbasketball-Turnier, das von den TVK Green Sharks aus Essen organisiert wird. Das Turnier bringt Mannschaften aus verschiedenen Städten und Regionen zusammen, um sich in freundschaftlicher Atmosphäre zu messen und ihre Fähigkeiten zu verbessern. Jedes Spiel ist eine Mischung aus sportlicher Herausforderung und gemeinschaftlichem Lernen.
@@ -31,11 +33,9 @@ Noch nicht ganz wach erreichten wir die Sporthalle in Essen. Bereits um 8 Uhr mo
 
 Die Halle war in drei Bereiche unterteilt: zwei Spielfelder und ein Aufenthaltsbereich, in dem sich die Teams zwischen den Spielen entspannen konnten. Die Verpflegung war am Eingang der Halle organisiert und bot eine Auswahl an Kuchen, Waffeln, Currywurst, belegten Brötchen und kalten sowie warmen Getränken.
 
-<div class="columns is-multiline" style="display: flex; margin-top: 0.5rem">
-  <div class="column is-12-mobile is-12-tablet is-6-desktop">
-    {% include iframe-card.html height="315" style="margin: auto; margin-bottom: 1.5rem; max-width: 560px;" src='https://www.youtube-nocookie.com/embed/youcRALe-Is' %}
-  </div>
-  <div class="column is-12-mobile is-12-tablet is-6-desktop" markdown="1" style="margin-top:0; padding-top: 0; padding-bottom: 0">
+<div class="grid grid-cols-1 lg:grid-cols-2" style="display: flex; margin-top: 0.5rem">
+  <IFrameCard height="315" style="margin: auto; margin-bottom: 1.5rem; max-width: 560px;" src='https://www.youtube-nocookie.com/embed/youcRALe-Is' />
+  <div style="margin-top:0; padding-top: 0; padding-bottom: 0">
 
 **Das Turnier war in zwei Gruppen Strukturiert:**
 
@@ -43,14 +43,13 @@ Die Halle war in drei Bereiche unterteilt: zwei Spielfelder und ein Aufenthaltsb
 
 | **Gruppe A** | **Gruppe B** |
 | ---------------------| ------------------------- |
-| [TVK Green Sharks 2](https://green-sharks.chayns.site/){:target="_blank"} | [TVK Green Sharks 3](https://green-sharks.chayns.site/){:target="_blank"} |
-| [HS Wuppertal](https://hsw-wuppertal.de/rollstuhlsport/){:target="_blank"} | [Rolling Baskets Magdeburg](http://fsv1895.de/fsv-rehasport) |
-| Basket Bears Krefeld | [Bertlicher Bulldogs Herten](https://www.facebook.com/people/Bertlicher-Bulldogs/100057492428574/){:target="_blank"}  |
-| [Köln 99ers 4](https://www.koeln99ers.de){:target="_blank"} | [Hannover United 3](https://www.hannover-united.de/teams/united-iii/united-iii-team-2020-2021){:target="_blank"} |
+| [TVK Green Sharks 2](https://green-sharks.chayns.site/) | [TVK Green Sharks 3](https://green-sharks.chayns.site/) |
+| [HS Wuppertal](https://hsw-wuppertal.de/rollstuhlsport/) | [Rolling Baskets Magdeburg](http://fsv1895.de/fsv-rehasport) |
+| Basket Bears Krefeld | [Bertlicher Bulldogs Herten](https://www.facebook.com/people/Bertlicher-Bulldogs/100057492428574/)  |
+| [Köln 99ers 4](https://www.koeln99ers.de) | [Hannover United 3](https://www.hannover-united.de/teams/united-iii/united-iii-team-2020-2021) |
 
 </div>
-
-  </div>
+</div>
 </div>
 
 
@@ -107,10 +106,8 @@ Nach einem Tag voller intensiver Spiele, bot die Siegerehrung eine Gelegenheit, 
 
 Der Tag endete jedoch nicht mit der Siegerehrung. Ein Teil unseres Teams verbrachte den Abend in geselliger Runde bei leckerem Essen - ein entspannter Ausklang eines ereignisreichen Turniertags.
 
-<div class="columns is-multiline" style="display: flex">
-  <div class="column is-4-widescreen is-6-desktop is-6-tablet is-12-mobile" style="margin: auto">
-    {% include image-card.html link="/img/news/pxl_20230618_165016288.webp" %}
-  </div>
+<div class="w-full lg:w-1/2" style="margin: auto">
+  ![](./pxl_20230618_165016288.webp)
 </div>
 
 An dieser Stelle möchten wir uns herzlich bei den TVK Green Sharks für die Veranstaltung des Sharks Cup bedanken. Das Turnier hat uns nicht nur viel Spaß gemacht, sondern auch wertvolle Erfahrungen und Einblicke in die Spielweisen der anderen Mannschaften geboten. Mit diesen neuen Erfahrungen und Erkenntnissen freuen wir uns auf die kommenden Spiele und Herausforderungen!

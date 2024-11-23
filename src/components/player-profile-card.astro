@@ -34,7 +34,7 @@ const modalId = slugify(`${playerId}-${player.playerInfo.number}`);
 <!-- Modal -->
 <div
   id={`${modalId}-modal`}
-  class="modal fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 hidden z-50"
+  class="modal fixed inset-0 items-center justify-center bg-black bg-opacity-70 hidden z-50"
 >
   <div class="modal-content bg-white rounded-lg overflow-hidden shadow-lg relative max-w-full max-h-full">
     <button
@@ -43,7 +43,7 @@ const modalId = slugify(`${playerId}-${player.playerInfo.number}`);
     >
       &times;
     </button>
-    <div class="p-4 flex flex-col items-center">
+    <div class="p-4 flex-col items-center">
       <Image
         height="1280"
         src={player.playerInfo.cardImage}

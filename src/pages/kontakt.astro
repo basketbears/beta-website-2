@@ -1,5 +1,5 @@
 ---
-import Layout from '~/layouts/main.astro';
+import Layout from '~/layouts/page.astro';
 
 import { getEntry } from 'astro:content';
 import PersonCard from '~/components/person-card.astro'
@@ -15,7 +15,7 @@ const jill = (await getEntry('people', 'jill0-0'))?.data;
 
 <Layout content={{title: "Kontakt"}}>
 
-<div class="grid grid-cols-1 md:grid-cols-2 mx-auto max-w-7xl px-4 gap-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 <div class="col-span-1">
 
 <h4>Schreibe uns eine E-Mail an <a href="mailto:info@basketbears.de">info@basket bears.de</a></h4>

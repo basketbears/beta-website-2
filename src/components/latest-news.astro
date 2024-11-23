@@ -6,11 +6,9 @@ import { getCollection } from 'astro:content';
 const news = await getCollection('news');
 const sortedNews = news.sort((post1, post2) => {
   return post2.data.date.getTime() - post1.data.date.getTime()
-});
-
+}).slice(0, 6);
 ---
-<Layout content={{title: "News"}}>
-  {sortedNews.map((post: any) => {
-    return <PostCard {...post} />
-  })}
-</Layout>
+
+{sortedNews.map((post: any) => {
+  return <PostCard {...post} />
+})}

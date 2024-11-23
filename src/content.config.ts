@@ -1,15 +1,14 @@
-// 1. Import utilities from `astro:content`
 import { defineCollection, z, reference } from 'astro:content';
-
-// 2. Import loader(s)
-import { glob, file } from 'astro/loaders';
+import { /*glob,*/ file } from 'astro/loaders';
 
 // 3. Define your collection(s)
 const news = defineCollection({
-  loader: glob({ pattern: '**\/[^_]*.mdx?', base: "./src/content/news" }),
+  // TODO: find out why the slug is missing if the loader is defined.
+  // without loader it works just fine
+  // loader: glob({ pattern: '**\/*.{md,mdx}', base: "./src/content/news" }),
   schema: ({ image }) => {
     return z.object({
-      date: z.date().optional(),
+      date: z.date(),
       title: z.string(),
       summary: z.string().optional(),
       author: z.string().optional(),

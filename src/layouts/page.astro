@@ -1,0 +1,11 @@
+---
+import Layout from '~/layouts/main.astro';
+
+const { title } = Astro.props;
+---
+
+<Layout content={{title: title}}>
+  <section class="p-6 lg:p-12 mx-auto max-w-7xl">
+    <slot />
+  </section>
+</Layout>

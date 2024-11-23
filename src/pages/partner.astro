@@ -1,5 +1,5 @@
 ---
-import Layout from '~/layouts/main.astro';
+import Layout from '~/layouts/page.astro';
 import {Image} from 'astro:assets';
 
 const partners = [{
@@ -45,7 +45,7 @@ const partners = [{
 ---
 
 <Layout content={{title: "Partner"}}>
-  <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 mx-auto max-w-7xl px-4 gap-">
+  <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
   {partners.map((partner) => {
     return (
       <div class="card" style="border: 1px solid #ededed">

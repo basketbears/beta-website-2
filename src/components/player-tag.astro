@@ -1,0 +1,17 @@
+---
+import {Image} from 'astro:assets';
+import {getEntry} from 'astro:content';
+
+const {playerId, number} = Astro.props
+
+const player = (await getEntry('people', playerId))?.data!;
+---
+<div>
+  <Image src={player.profileImage} alt={player.displayName} />
+  <span>
+    {`${player.firstName} ${player.lastName}`}
+  </span>
+  <span>
+    {number ?? player.playerInfo.number}
+  </span>
+</div>

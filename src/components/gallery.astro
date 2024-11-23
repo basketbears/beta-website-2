@@ -1,0 +1,12 @@
+---
+import {Image} from 'astro:assets'
+
+const {images} = Astro.props;
+---
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+  {images.map((image: any) => {
+    return(
+      <Image src={image.image} alt="" />
+    )
+  })}
+</div>

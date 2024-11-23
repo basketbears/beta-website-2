@@ -6,7 +6,6 @@ author: Sven Kaiser
 hero_image: ./whatsapp-bild-2023-11-25-um-17-27-24_4a2c54362.jpg
 image: ./whatsapp-bild-2023-11-25-um-17-27-24_4a2c5436.jpg
 image_source: Stephan Parthier
-coach: ""
 ---
 
 ## Ein Resümee auf halber Strecke

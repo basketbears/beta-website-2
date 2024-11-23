@@ -2,6 +2,9 @@
 import Layout from '~/layouts/main.astro';
 
 import { getCollection, render } from 'astro:content';
+import Gallery from '~/components/gallery.astro';
+import Kader from '~/components/kader.astro';
+
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
   const posts = await getCollection('news');
@@ -17,4 +20,10 @@ const { Content } = await render(post);
 ---
 <Layout content={{title: post.data.title}}>
   <Content />
+  {post.data.gallery != null ? (
+    <Gallery images={post.data.gallery} />
+  ): null}
+  {post.data.players != null ? (
+    <Kader players={post.data.players} coach={post.data.coach} />
+  ): null}
 </Layout />

@@ -1,0 +1,13 @@
+---
+import PlayerTag from "./player-tag.astro";
+
+const {players, coach} = Astro.props;
+---
+<div>
+  {players.map((player: any) => {
+    return <PlayerTag playerId={player.id} />;
+  })}
+  {coach != null ? (
+    <PlayerTag playerId={coach.id} number="Coach" />
+  ) : null}
+</div>

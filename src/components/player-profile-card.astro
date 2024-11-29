@@ -1,15 +1,15 @@
 ---
-import {getEntry} from 'astro:content';
-import {Image} from 'astro:assets'
+import { getEntry } from 'astro:content';
+import { Image } from 'astro:assets';
 
 function slugify(text: string): string {
   return text
     .toString()
     .toLowerCase()
     .trim()
-    .replace(/\s+/g, '-')       // Replace spaces with -
-    .replace(/[^\w\-]+/g, '')   // Remove all non-word chars
-    .replace(/--+/g, '-');      // Replace multiple - with single -
+    .replace(/\s+/g, '-') // Replace spaces with -
+    .replace(/[^\w\-]+/g, '') // Remove all non-word chars
+    .replace(/--+/g, '-'); // Replace multiple - with single -
 }
 
 const { playerId, background } = Astro.props;
@@ -19,122 +19,111 @@ const modalId = slugify(`${playerId}-${player.playerInfo.number}`);
 <!-- Player Card -->
 <div
   id={`${modalId}-card`}
-  class="player-card bg-white rounded-lg shadow-md overflow-hidden"
+  class="player-card m-0"
   style={background ? `--card-background: ${background}` : undefined}
 >
-  <a href="#">
-    <Image height="480" width="384" src={player.playerInfo.cardImage} alt={player.displayName} class="w-full object-cover" />
-  </a>
-  <div class="flex justify-between items-center px-4 py-2" style="background-color: var(--card-background, #111171);">
-    <span class="text-white font-bold">{player.firstName}</span>
-    <span class="text-white font-bold">{`#${player.playerInfo.number}`}</span>
-  </div>
+  <Image
+    height="480"
+    width="384"
+    src={player.playerInfo.cardImage}
+    alt={player.displayName}
+    class="object-cover"
+  />
+  <footer>
+    <span class="w-full text-center">{player.firstName}</span>
+    <span>{`#${player.playerInfo.number}`}</span>
+  </footer>
 </div>
 
 <!-- Modal -->
-<div
-  id={`${modalId}-modal`}
-  class="modal fixed inset-0 items-center justify-center bg-black bg-opacity-70 hidden z-50"
->
-  <div class="modal-content bg-white rounded-lg overflow-hidden shadow-lg relative max-w-full max-h-full">
-    <button
-      class="modal-close absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-2xl font-bold focus:outline-none"
-      aria-label="Close"
-    >
-      &times;
-    </button>
-    <div class="p-4 flex-col items-center">
-      <Image
-        height="1280"
-        src={player.playerInfo.cardImage}
-        alt={player.displayName}
-        class="w-full max-w-md object-cover"
-        loading="lazy"
-      />
-      <div class="mt-4 text-center">
-        <span class="text-2xl font-bold">{player.firstName} {player.lastName}</span>
-        <span class="text-xl font-bold block">{`#${player.playerInfo.number}`}</span>
-      </div>
-    </div>
-  </div>
-</div>
+<dialog id={`${modalId}-modal`} class="player-card m-auto">
+  <button
+    class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-2xl font-bold focus:outline-none"
+    aria-label="Close"
+  >
+    &times;
+  </button>
+  <Image
+    height="1280"
+    src={player.playerInfo.cardImage}
+    alt={player.displayName}
+    class="object-cover"
+  />
+  <footer>
+    <span class="w-full text-center">{player.firstName} {player.lastName}</span>
+    <span>{`#${player.playerInfo.number}`}</span>
+  </footer>
+</dialog>
 
 <style lang="scss">
   $player-card-gradient: linear-gradient(99deg, rgba(178,187,207,1) 0%, rgba(235,238,238,1) 50%, rgba(178,187,207,1) 100%);
+
   .player-card {
     --card-background: #111171;
     border-radius: 0.5rem;
     background: $player-card-gradient;
-    color: #FFFFFF;
-  
-    footer {
-      border: none;
-      background-color: var(--card-background);
-      color: #FFFFFF;
-  
-      .card-footer-item {
-        border: none;
-        user-select: none;
-      }
+    color: #ffffff;
+    overflow: hidden;
+    transition: transform 100ms, box-shadow 100ms;
+    box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.2), 0 0px 0 1px rgba(10, 10, 10, 0.02);
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0.5em 1.5em 0 rgba(10, 10, 10, 0.3), 0 0px 0 1px rgba(10, 10, 10, 0.02);
     }
-  
+
+    footer {
+      background-color: var(--card-background);
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem 0.75rem;
+    }
+
     .player-name {
       white-space: nowrap;
       overflow: hidden;
       display: block;
       text-align: center;
     }
-  
+
     img {
       aspect-ratio: 0.8;
       object-fit: cover;
       object-position: top !important;
     }
   }
-  
-  .image-modal {
-    font-size: 1.5rem;
-    border-radius: 0.25rem;
-    width: auto;
-  
-    $modal-card-spacing: 0;
-    .modal-card-body {
-      padding: 0;
-      margin: 0;
-      display: flex;
-      img {
-        max-height: calc(100vh - 120px);
-        max-width: calc(100vw - 40px);
-        min-width: 100%;
-      }
-    }
-    footer {
-      padding: 0.25rem;
-    }
+
+  dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  // prevent the dialog from zooming on hover
+  dialog.player-card:hover {
+    transform: none;
+    box-shadow: none;
   }
 </style>
 
 <script is:inline define:vars={{ modalId }}>
   const modal = document.getElementById(modalId + '-modal');
-  const modalContent = modal.querySelector('.modal-content');
-
-  const toggleModal = () => {
-    modal.classList.toggle('hidden');
-    document.body.classList.toggle('overflow-hidden');
-  }
-
   const card = document.getElementById(modalId + '-card');
-  card.addEventListener('click', function(event) {
-    event.preventDefault();
-    toggleModal()
+  const closeModalButton = modal.querySelector('button');
+
+  card.addEventListener('click', () => {
+    modal.showModal();
+    document.body.style.overflow = 'hidden';
   });
 
-  const closeModalButton = modal.querySelector('.modal-close');
-  closeModalButton.addEventListener('click', toggleModal);
+  closeModalButton.addEventListener('click', () => {
+    modal.close();
+    document.body.style.overflow = '';
+  });
 
-  modal.addEventListener('click', function(event) {
-    if (!modalContent.contains(event.target)) {
-      toggleModal();
+  // Close the modal when clicking outside the modal content
+  modal.addEventListener('click', (event) => {
+    if (event.target === modal) {
+      modal.close();
+      document.body.style.overflow = '';
     }
   });
 </script>
